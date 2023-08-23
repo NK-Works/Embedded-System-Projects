@@ -18,14 +18,6 @@ unsigned long lastButtonPress = 0;  // Variable to track the time of the last bu
 void setup() {
   Serial.begin(9600);   // Setting up the serial communication for getting the user input
   
-  // Some introductory messages for the interface
-  Serial.println("\n      --------------------");
-  Serial.println("      | MORSE CODE BLINK |");
-  Serial.println("      --------------------");
-  Serial.println("      |  By Anneshu Nag  |");
-  Serial.println("      --------------------");
-  Serial.println("+ Click the button to enter name +");
-  
   pinMode(ledPin, OUTPUT);
   pinMode(buttonPin, INPUT_PULLUP);  // Activating the internal pull-up resistor for the push button
   attachInterrupt(digitalPinToInterrupt(buttonPin), interruptBlink, FALLING);   // Attaching interruption to jump if the Morse Code is blinking and forcefully stopping the blink
