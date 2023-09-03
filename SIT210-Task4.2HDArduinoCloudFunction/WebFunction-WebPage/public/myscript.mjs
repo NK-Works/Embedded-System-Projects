@@ -7,14 +7,17 @@ import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/1
 import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/10.3.1/firebase-database.js";
 
 // Configuration (Unique)
+/* I am removing the sensitive data regarding the apiKeys and the databse URLs, */
+/* The authentication for my webpage is set to anonymous which is the least seccure way.*/
+/* You must generate your personal configurations in the firebase website. */
 const firebaseConfig = {
-    apiKey: "AIzaSyCY3R0IeKmEjbI6NCZnIKWyES4wNuL5NtY",
-    authDomain: "nksit210taskwf.firebaseapp.com",
-    databaseURL: "https://nksit210taskwf-default-rtdb.firebaseio.com",
+    apiKey: "Your API Key here",
+    authDomain: "Your domain here",
+    databaseURL: "Your database URL here",
     projectId: "nksit210taskwf",
-    storageBucket: "nksit210taskwf.appspot.com",
-    messagingSenderId: "366284117229",
-    appId: "1:366284117229:web:b798945b9c366f4dcc28e4"
+    storageBucket: "Your storage bucket here",
+    messagingSenderId: "Your sender ID here",
+    appId: "Your App ID here"
 };
 
 // Initialize Firebase
