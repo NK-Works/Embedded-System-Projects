@@ -1,0 +1,182 @@
+/* This code is made by Anneshu Nag, Student ID- 2210994760  */
+/*                    Dated- 02/09/2023                      */
+
+/* Resetting margin and padding for all elements */
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+/* Body styling */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Navigation area styling */
+.navArea {
+  padding-top: 10px;
+  background-color: rgb(193, 202, 211);
+  display: flex;
+  align-items: center;
+  max-width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+/* Navigation bar styling */
+.navigation_bar {
+  padding: 10px;
+  float: left;
+  /* Keep navigation_bar at the left corner */
+}
+
+/* Styling for navigation links and cells */
+.navigation_bar,
+a {
+  font-size: 18px;
+  padding: 5px;
+  color: black;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* Hover effect on navigation links */
+a:hover {
+  border-radius: 35px;
+  background-color: whitesmoke;
+}
+
+/* Heading 3 styling */
+h3 {
+  margin: 0;
+}
+
+/* Styling for the introductory image section */
+.introImage {
+  max-width: 100%;
+  height: auto;
+  text-align: center;
+  position: relative;
+}
+
+/* Styling for the banner image within the introImage section */
+.banner {
+  width: 100%;
+  max-height: 100%;
+}
+
+/* Styling for the myIntro div within the introImage section */
+.introImage .myIntro {
+  position: absolute;
+  top: 85%; /* Vertically center the div within the parent .introImage */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(54, 52, 52, 0.8); /* Background color with opacity */
+  color: azure;
+  padding: 20px;
+  font-size: 1.2rem;
+  border-radius: 10px;
+  transition: all 0.4s ease-in;
+  opacity: 0;
+  width: 90%;
+  max-width: 500px; /* Set a maximum width to ensure responsiveness */
+  text-align: center; /* Center-align the text within the div */
+}
+
+/* Hover effect for the .myIntro div */
+.introImage:hover .myIntro {
+  opacity: 1;
+}
+
+/* Styling for the CONTROL PANEL section */
+.pannel {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: #3498db;
+}
+
+/* Styling for the heading within the CONTROL PANEL section */
+h1 {
+  color: white;
+  font-size: 24px;
+  text-align: center;
+  padding: 20px;
+}
+
+/* Styling for the controlbanner image */
+.controlbanner {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Styling for the buttons */
+.buttons {
+  text-align: center;
+  border-radius: 20%;
+  border: none;
+  color: black;
+  padding: 15px 32px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 2%;
+  transition: all 0.4 ease-in;
+}
+
+/* Hover effect for buttons */
+.buttons:hover {
+  color: rgb(9, 83, 83);
+}
+
+/* Styling for the redButton */
+.redButton {
+  margin-left: 23.8%;
+  background-color: red;
+}
+
+/* Styling for the yellowButton */
+.yellowButton {
+  margin-left: 14.2%;
+  background-color: yellow;
+}
+
+/* Styling for the greenButton */
+.greenButton {
+  margin-left: 13.3%;
+  background-color: rgb(13, 230, 13);
+}
+
+/* Styling for the offButton */
+.offButton {
+  margin-left: 46.8%;
+  background-color: rgb(190, 185, 185);
+}
+
+/* Media query for responsiveness */
+@media screen and (max-width: 768px) {
+  .buttons {
+    display: block;
+    margin: 2% auto;
+    width: 80%;
+  }
+
+  .buttons:not(.offButton) {
+    margin-bottom: 2%;
+  }
+
+  .offButton {
+    margin-top: 4%;
+  }
+}

@@ -1,0 +1,73 @@
+<!-- This code is made by Anneshu Nag, Student ID- 2210994760 -->
+<!--                   Dated- 02/09/2023                      -->
+
+<!--        This webpage is hosted on google firebase         -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Title for the page -->
+    <title>Traffic Lights</title>
+    <!-- Link to external stylesheet -->
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+</head>
+
+<body>
+    <!-- Navigation and page heading -->
+    <div class="navArea">
+        <nav class="navigation_bar">
+            <ul>
+                <a href="#about">About</a>
+                <a href="#control">Control</a>
+            </ul>
+        </nav>
+        <!-- Page heading -->
+        <h3> Embedded Systems - Task 4.2HD</h3>
+    </div>
+
+    <!-- About section -->
+    <section id="about"></section>
+    <!-- Main image with introduction -->
+    <div class="introImage">
+        <img class=banner src="image/TrafficLightBanner.jpg" alt="trafficbanner" />
+        <!-- Introduction text -->
+        <h class="myIntro">Controlling Traffic Lights from the Web</h>
+    </div>
+
+    <!-- Additional information -->
+    <div class="navArea">
+        <h2>Presented by Anneshu Nag, Student ID- 2210994760</h2>
+    </div> <br><br>
+
+    <!-- Control section -->
+    <section id="control"></section>
+    <!-- Control panel heading -->
+    <div class="pannel">
+        <h1>CONTROL PANEL</h1>
+    </div> <br><br>
+
+    <!-- Control panel image and buttons -->
+    <img src="image/ControlPanel.jpg" class="controlbanner">
+    <button class="buttons redButton" onclick="glowRedLED()">RED</button>
+    <button class="buttons yellowButton" onclick="glowYellowLED()">YELLOW</button>
+    <button class="buttons greenButton" onclick="glowGreenLED()">GREEN</button> <br>
+    <button class="buttons offButton" onclick="dontGlowLED()">OFF</button> <br><br>
+
+    <!-- JavaScript module import and function definitions -->
+    <script type=module>
+        // Import functions from the JavaScript module
+        import { glowRedLED, glowYellowLED, glowGreenLED, dontGlowLED } from './myscript.mjs';
+        
+        // Define the functions as global functions so they can be called from HTML
+        window.glowRedLED = glowRedLED;
+        window.glowYellowLED = glowYellowLED;
+        window.glowGreenLED = glowGreenLED;
+        window.dontGlowLED = dontGlowLED;
+    </script>
+</body>
+
+</html>
