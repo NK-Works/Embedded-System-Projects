@@ -34,27 +34,50 @@ signInAnonymously(getAuth(app))
         console.error("Anonymous sign-in error:", error);
     });
 
-// Functions to send data to Realtime Database
-export function glowRedLED() {
+// Function to send data to Realtime Database and change the displayed image
+function sendAndDisplayData(color) {
+    // Send data to the database
     set(ref(database, "mypath/"), {
-        caught: "red"   // Sends "red"
+        caught: color
     });
+
+    // Hide all images
+    hideAllImages();
+
+    // Display the relevant image based on the color
+    if (color === "red") {
+        document.getElementById('redImage').style.display = 'block';
+    } else if (color === "yellow") {
+        document.getElementById('yellowImage').style.display = 'block';
+    } else if (color === "green") {
+        document.getElementById('greenImage').style.display = 'block';
+    } else {
+        // Default case: "switchoff" or any other unknown value
+        document.getElementById('defaultImage').style.display = 'block';
+    }
+}
+
+// Function to hide all images
+function hideAllImages() {
+    document.getElementById('defaultImage').style.display = 'none';
+    document.getElementById('redImage').style.display = 'none';
+    document.getElementById('yellowImage').style.display = 'none';
+    document.getElementById('greenImage').style.display = 'none';
+}
+
+// Button click functions
+export function glowRedLED() {
+    sendAndDisplayData("red");
 }
 
 export function glowYellowLED() {
-    set(ref(database, "mypath/"), {
-        caught: "yellow"   // Sends "yellow"
-    });
+    sendAndDisplayData("yellow");
 }
 
 export function glowGreenLED() {
-    set(ref(database, "mypath/"), {
-        caught: "green"   // Sends "green"
-    });
+    sendAndDisplayData("green");
 }
 
 export function dontGlowLED() {
-    set(ref(database, "mypath/"), {
-        caught: "switchoff"   // Sends "switchoff"
-    });
+    sendAndDisplayData("switchoff");
 }
