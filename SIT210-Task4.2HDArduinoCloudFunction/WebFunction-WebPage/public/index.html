@@ -50,12 +50,29 @@
         <h1>CONTROL PANEL</h1>
     </div> <br><br>
 
-    <!-- Control panel image and buttons -->
-    <img src="image/ControlPanel.jpg" class="controlbanner">
-    <button class="buttons redButton" onclick="glowRedLED()">RED</button>
-    <button class="buttons yellowButton" onclick="glowYellowLED()">YELLOW</button>
-    <button class="buttons greenButton" onclick="glowGreenLED()">GREEN</button> <br>
-    <button class="buttons offButton" onclick="dontGlowLED()">OFF</button> <br><br>
+   <!-- Control panel image and buttons -->
+   <div class="image-container">
+        <img id="defaultImage" src="image/default.jpg" class="controlbanner">
+        <img id="redImage" src="image/red.jpg" class="controlbanner">
+        <img id="yellowImage" src="image/yellow.jpg" class="controlbanner">
+        <img id="greenImage" src="image/green.jpg" class="controlbanner">
+    </div>
+        
+        <!-- Control panel image and buttons -->
+    <div class="button-container">
+        <button class="buttons redButton" onclick="glowRedLED()">RED</button>
+        <button class="buttons yellowButton" onclick="glowYellowLED()">YELLOW</button>
+        <button class="buttons greenButton" onclick="glowGreenLED()">GREEN</button>
+        <button class="buttons offButton" onclick="dontGlowLED()">OFF</button>
+    </div> 
+
+    <div class="navArea">
+        <h2>My YouTube Video</h2>
+    </div> <br><br>
+    <div class="video-container">
+
+        <iframe max-width="100px" width="100%" height="500px" src="https://www.youtube.com/embed/nqgiWgs02Ro" frameborder="0" allowfullscreen></iframe>
+    </div>
 
     <!-- JavaScript module import and function definitions -->
     <script type=module>
