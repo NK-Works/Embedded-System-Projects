@@ -72,10 +72,10 @@ h3 {
 /* Styling for the myIntro div within the introImage section */
 .introImage .myIntro {
   position: absolute;
-  top: 85%; /* Vertically center the div within the parent .introImage */
+  top: 85%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: rgba(54, 52, 52, 0.8); /* Background color with opacity */
+  background-color: rgba(54, 52, 52, 0.8); 
   color: azure;
   padding: 20px;
   font-size: 1.2rem;
@@ -83,8 +83,8 @@ h3 {
   transition: all 0.4s ease-in;
   opacity: 0;
   width: 90%;
-  max-width: 500px; /* Set a maximum width to ensure responsiveness */
-  text-align: center; /* Center-align the text within the div */
+  max-width: 500px; 
+  text-align: center; 
 }
 
 /* Hover effect for the .myIntro div */
@@ -109,18 +109,36 @@ h1 {
   padding: 20px;
 }
 
-/* Styling for the controlbanner image */
-.controlbanner {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 100%;
-  height: auto;
+/* Style for the container that holds the overlapping images */
+.image-container {
+  position: relative;
+    text-align: center; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
+/* Style for the images */
+.controlbanner {
+  max-width: 100%; 
+    height: auto; 
+    display: none;
+}
+
+/* Style for the default image (initially visible) */
+#defaultImage {
+  display: block;
+}
+
+.button-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin-bottom: 30px;
+}
 /* Styling for the buttons */
 .buttons {
-  text-align: center;
   border-radius: 20%;
   border: none;
   color: black;
@@ -128,7 +146,6 @@ h1 {
   font-weight: bold;
   text-align: center;
   text-decoration: none;
-  display: inline-block;
   font-size: 16px;
   cursor: pointer;
   margin-top: 2%;
@@ -137,33 +154,35 @@ h1 {
 
 /* Hover effect for buttons */
 .buttons:hover {
-  color: rgb(9, 83, 83);
+  color: rgb(72, 10, 97);
 }
 
 /* Styling for the redButton */
 .redButton {
-  margin-left: 23.8%;
   background-color: red;
 }
 
 /* Styling for the yellowButton */
 .yellowButton {
-  margin-left: 14.2%;
   background-color: yellow;
 }
 
 /* Styling for the greenButton */
 .greenButton {
-  margin-left: 13.3%;
   background-color: rgb(13, 230, 13);
 }
 
 /* Styling for the offButton */
 .offButton {
-  margin-left: 46.8%;
   background-color: rgb(190, 185, 185);
 }
-
+/* Style for the container that holds the embedded video */
+.video-container {
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  margin-bottom: 10px;
+}
 /* Media query for responsiveness */
 @media screen and (max-width: 768px) {
   .buttons {
