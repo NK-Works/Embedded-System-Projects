@@ -2,25 +2,26 @@
 /*                    Dated- 30/08/2023                      */
 
 #include <WiFiNINA.h>
+#include <Wire.h>
+#include <BH1750.h>
 
 // WiFi credentials
-char ssid[] = "Place your WiFi SSID here";
-char pass[] = "Place your WiFi Password here";
+char ssid[] = "Place your Wi-Fi name here";
+char pass[] = "Place your Wi-Fi password here";
 
 WiFiClient myClient;
+BH1750 lightMeter;  // Create an instance of the BH1750 light sensor library
+const int ledCheck = 2;
 
-char HOST_NAME[] = "maker.ifttt.com";  // Website
-String PATH_NAME = "Place your URL here"; // Key and Trigger
-String queryString = "?value1=";
-
-#define LDRpin A0
-int LDRValue = 0;
+char HOST_NAME[] = "Place the website name here";   // Website
+String PATH_NAME = "Place the path name (URL) here";  // Key and Trigger
 
 void setup() {
   // Start WiFi connection
   WiFi.begin(ssid, pass);
   Serial.begin(9600);
-  
+  pinMode(ledCheck, OUTPUT);
+
   // Wait until Serial is ready
   while (!Serial)
     ;
@@ -33,58 +34,65 @@ void setup() {
   }
   Serial.println("WiFi - Connected.\n");
 
+  Wire.begin();
+  lightMeter.begin();
+  Serial.println("+ Light-Intensity Sensing Started! +");
+  delay(500);
+
   // Print a header for the program
   Serial.println("------------------------------");
   Serial.println("|     IFTTT - Webhook        |");
   Serial.println("|     -By Anneshu Nag        |");
-  Serial.println("|   Press 's' to send data   |");
   Serial.println("------------------------------");
 }
 
 void loop() {
-  // Read LDR sensor value
-  LDRValue = analogRead(LDRpin);
-  Serial.print("LDR Value: ");
-  Serial.print(LDRValue);
+  float lux = lightMeter.readLightLevel();
+  Serial.print("Light Intensity: ");
+  Serial.println(lux);
 
-  // Read input from Serial Monitor
-  char input = Serial.read();
-  if (input == 's') {
-    Serial.println("");
-
-    // Check WiFi connection and client connection
-    if (!myClient.connected() && WiFi.status() == WL_CONNECTED) {
-      if (myClient.connect(HOST_NAME, 80)) {
-        Serial.println("\nConnected to server.\n");
-      } else {
-        Serial.println("\nConnection failed.\n");
-      }
-    }
-    // Prepare the payload and send the HTTP request
-    String payload = queryString + String(LDRValue);
-    myClient.println("GET " + PATH_NAME + payload + " HTTP/1.1");
-    myClient.println("Host: " + String(HOST_NAME));
-    myClient.println("Connection: close");
-    myClient.println();
-
-    // Read and print the server response
-    while (myClient.connected()) {
-      if (myClient.available()) {
-        char c = myClient.read();
-        Serial.print(c);
-      }
-    }
-    Serial.println(" \n");
-  } else if (input == 'q') {
-    Serial.println("");
-    // Stop client connection and print a message
-    myClient.stop();
-    Serial.println();
-    Serial.println("Destructive action initiated...");
-    Serial.println("*Enter 's' to regenerate connection.*");
-    Serial.println("Disconnected.\n");
+  // The conditions are specified here
+  if (lux > 1000) {
+    Serial.println("Condition is Triggered!");
+    Serial.println(">> It's very bright!");
+    sendDatatoIFTTT("Bright_Light:", lux);   // Sending data for this condition
+  } else if (lux > 600) {
+    Serial.println("Condition is not Triggered!");
+    Serial.println(">> It's moderately bright.\n");  // Not sending data for this condition
+  } else if (lux > 200) {
+    Serial.println("Condition is not Triggered!");
+    Serial.println(">> It's a bit dim.\n");   // Not sending data for this condition
   } else {
-    Serial.println(" | Not sending any data...");
+    Serial.println("Condition is Triggered!");
+    Serial.println(">> It's dark.");
+    sendDatatoIFTTT("Dim:", lux);   // Sending data for this condition
   }
-  delay(2000); // Delay before looping again
+
+  delay(10000);  // Delay before looping again
+}
+
+void sendDatatoIFTTT(String msg, float luxVal) {
+  // Check WiFi connection and client connection
+  if (!myClient.connected() && WiFi.status() == WL_CONNECTED) {
+    if (myClient.connect(HOST_NAME, 80)) {
+      Serial.println("\nConnected to server.\n");
+    } else {
+      Serial.println("\nConnection failed.\n");
+    }
+  }
+  // Prepare the payload and send the HTTP request
+  String payLoad = "?value1=" + msg + "&value2=" + String(luxVal);
+  myClient.println("GET " + PATH_NAME + payLoad + " HTTP/1.1");
+  myClient.println("Host: " + String(HOST_NAME));
+  myClient.println("Connection: close");
+  myClient.println();
+
+  // Read and print the server response
+  while (myClient.connected()) {
+    if (myClient.available()) {
+      char c = myClient.read();
+      Serial.print(c);
+    }
+  }
+  Serial.println(" \n");
 }
