@@ -105,7 +105,7 @@ void onMqttMessage(int messageSize) {
   digitalWrite(LEDPin, LOW);   
   delay(300);
   } else if (message == "NK : Pat signal recorded!"){
-    // Flash the LED as a notification (3 times per publish)
+    // Flash the LED as a notification (2 times per publish)
   digitalWrite(LEDPin, HIGH);   
   delay(300);                      
   digitalWrite(LEDPin, LOW);   
