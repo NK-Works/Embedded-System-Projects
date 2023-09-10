@@ -6,8 +6,8 @@
 #include <WiFiNINA.h>
 
 // WiFi credentials
-char ssid[] = "Your WiFi SSID";  // Your WiFi SSID
-char pass[] = "Your WiFI Password";  // You WiFi Password
+char ssid[] = "Your Wi-Fi SSID";  // Your WiFi SSID
+char pass[] = "Your Wi-Fi passwod";  // You WiFi Password
 
 // Pin for controlling the light
 int LEDPin = 4;
@@ -79,18 +79,18 @@ void loop() {
 
 // MQTT message handler
 void onMqttMessage(int messageSize) {
-  Serial.println("Received a message with topic '");
+  Serial.print("Received a message with topic '");
   Serial.print(mqttClient.messageTopic());
   Serial.print("', length ");
   Serial.print(messageSize);
   Serial.println(" bytes:");
 
-  // Read and print the received message
-  while (mqttClient.available()) {
-    Serial.print((char)mqttClient.read());
-  }
+  String message = mqttClient.readString();
+  Serial.print("Message: ");
+  Serial.println(message);
   Serial.println();
-
+  
+  if (message == "NK : Wave signal recorded!") {
   // Flash the LED as a notification (3 times per publish)
   digitalWrite(LEDPin, HIGH);   
   delay(300);                      
@@ -104,6 +104,16 @@ void onMqttMessage(int messageSize) {
   delay(300);                    
   digitalWrite(LEDPin, LOW);   
   delay(300);
-
-  Serial.println();
+  } else if (message == "NK : Pat signal recorded!"){
+    // Flash the LED as a notification (3 times per publish)
+  digitalWrite(LEDPin, HIGH);   
+  delay(300);                      
+  digitalWrite(LEDPin, LOW);   
+  delay(300);
+  digitalWrite(LEDPin, HIGH);   
+  delay(300);                    
+  digitalWrite(LEDPin, LOW);   
+  delay(300);
+  }
+ 
 }
