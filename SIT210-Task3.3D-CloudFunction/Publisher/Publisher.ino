@@ -4,10 +4,10 @@
 /* In this code, the Arduino Nano 33 IoT is acting as the publisher. */
 #include <ArduinoMqttClient.h>
 #include <WiFiNINA.h>
-
+  
 // WiFi credentials
-char ssid[] = "Your WiFi SSID"; // WiFi SSID
-char pass[] = "Your WiFi Password";  // WiFi Password
+char ssid[] = "Your Wi-Fi SSID"; // WiFi SSID
+char pass[] = "Your Wi-Fi password";  // WiFi Password
 
 // Ultrasonic sensor pins
 const int trigPin = 2;
@@ -82,14 +82,22 @@ void loop() {
     
     // Send message if distance is below threshold
     if (distance < 10) {
-      Serial.print("Sending wave message to topic: ");
+      Serial.print("Sending 'wave' message to topic: ");
       Serial.println(topic);
 
       // Begin constructing MQTT message
       mqttClient.beginMessage(topic);
-      mqttClient.print("Anneshu : Wave signal recorded, ");
-      mqttClient.print("Distance: ");
-      mqttClient.print(distance);
+      mqttClient.print("NK : Wave signal recorded!");
+      mqttClient.endMessage();
+      delay(1000); // Delay for stability
+    
+    } else if (distance < 30 && distance > 10){
+      Serial.print("Sending 'pat' message to topic: ");
+      Serial.println(topic);
+
+      // Begin constructing MQTT message
+      mqttClient.beginMessage(topic);
+      mqttClient.print("NK : Pat signal recorded!");
       mqttClient.endMessage();
       delay(1000); // Delay for stability
     }
