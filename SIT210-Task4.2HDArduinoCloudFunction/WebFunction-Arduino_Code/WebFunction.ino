@@ -4,9 +4,6 @@
 /* This is the Arduino code that connects to the firebase real-times database. */
 
 // Importing the required libraries for building this project
-#include <Arduino.h>
-#include <WiFiNINA.h>
-#include <ArduinoJson.h>
 #include <Firebase_Arduino_WiFiNINA.h>
 
 // Configuring firebase
