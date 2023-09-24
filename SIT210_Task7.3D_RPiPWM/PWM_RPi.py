@@ -1,12 +1,12 @@
 # This code is written by Anneshu Nag, Student ID- 2210994760 #
 #                       Dated- 23/09/2023                     #
 #  Using Ultrasonic Sensor to glow LED at variable intensity  #
-#      Playing the buzzer at different pitch accordingly      #
+#    Playing the buzzer at different frequency accordingly    #
 
 # Learnt all about gpiozero from: https://gpiozero.readthedocs.io/en/stable/index.html # 
 
 # Importing the gpiozreo library 
-from gpiozero import DistanceSensor, PWMLED, Buzzer
+from gpiozero import DistanceSensor, PWMLED, PWMOutputDevice # For Buzzer
 from time import sleep
 
 # Set the GPIO pin numbers for the ultrasonic sensor, LED, and buzzer
@@ -17,12 +17,12 @@ BUZZER_PIN = 15
 
 # Create a DistanceSensor object for the ultrasonic sensor
 ultrasonic_sensor = DistanceSensor(echo=ECHO_PIN, trigger=TRIG_PIN, max_distance = 0.5)
-
+    
 # Create a PWMLED object for the LED
 led = PWMLED(LED_PIN)
 
-# Create a TonalBuzzer object for the buzzer
-buzzer = Buzzer(BUZZER_PIN)
+# Create a PWMBuzzer object for the buzzer (Innate PWM for buzzer is not there so used PWMOutputDevice to get the desired effects)
+buzzer = PWMOutputDevice(BUZZER_PIN)
 
 # Some Introductory messages
 print("\n----NK-WORKS----")
