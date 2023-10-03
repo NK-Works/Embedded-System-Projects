@@ -1,6 +1,6 @@
 # Embedded System Projects
 
-This repository contains a collection of IoT projects and code related to various tasks and devices. Each project is organized into its respective directory, and this README provides an overview of the repository's structure and usage instructions.
+This repository contains a collection of Embedded System projects and code related to various tasks and devices. Each project is organized into its respective directory, and this README provides an overview of the repository's structure and usage instructions.
 
 ## Table of Contents
 - [Project Descriptions](#project-descriptions)
