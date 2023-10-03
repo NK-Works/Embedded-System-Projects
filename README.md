@@ -8,7 +8,6 @@ This repository contains a collection of Embedded System projects and code relat
 - [Setup](#setup)
 - [Usage](#usage)
 - [Contributing](#contributing)
-- [License](#license)
 
 ## Project Descriptions
 
