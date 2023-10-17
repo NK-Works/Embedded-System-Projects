@@ -67,7 +67,7 @@ def bink_morse_func(letter):
         # Pause between letters
         time.sleep(0.6) # 3x dot
 
-# Function to handle when the button enter is pressed i.e. setting the conditions to call the above function and handling changed to the GUI
+# Function to handle when the button enter is pressed i.e. setting the conditions to call the above function and handling changes to the GUI
 def entering_morse_blink():
     user_input = entry.get().upper() # Converting letters to uppercase
     message_label.config(text="", bg="lightyellow")  # Clear any previous messages
