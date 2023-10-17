@@ -67,20 +67,22 @@ def bink_morse_func(letter):
         # Pause between letters
         time.sleep(0.6) # 3x dot
 
-# Function to handle when the button enter is pressed
+# Function to handle when the button enter is pressed i.e. setting the conditions to call the above function and handling changed to the GUI
 def entering_morse_blink():
     user_input = entry.get().upper() # Converting letters to uppercase
     message_label.config(text="", bg="lightyellow")  # Clear any previous messages
     if user_input:
+        # Setting maximum left of the characters to 12
         if len(user_input) <= 12:
             if not any(char.isdigit() for char in user_input):
+                # Message showing which word is being Morsed
                 message_label.config(text=f"Blinking for: {user_input}", fg="darkgreen", bg="lightyellow")
                 blinking_in_progress[0] = True
-                
+                # A thread to keep check of the Morse blink progress
                 def blinker_thread():
                     for letter in user_input:
                         if letter in my_morse_codes:
-                            bink_morse_func(letter)
+                            bink_morse_func(letter) # Calling the Morse Blnink function
                     message_label.config(text="Blink completed.", fg="darkgreen", bg="lightyellow")
                     entry.delete(0, 'end')  # Clear the entry field
                     window.after(2000, lambda: message_label.config(text=""))  # Clear message after a delay
