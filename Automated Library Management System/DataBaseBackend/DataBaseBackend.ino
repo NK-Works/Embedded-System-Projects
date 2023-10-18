@@ -1,3 +1,8 @@
+# This is the final code for SIT210 - Final Project #
+#             Made by Team Embed Tech               #
+#     Automated Library Management System Code      #
+#  By Anneshu Nag, Anshpreet Singh, Gaganveer Singh #
+
 #include <WiFiNINA.h>
 
 char ssid[] = "Your Network SSID";      // your network SSID (name)
