@@ -1,8 +1,9 @@
-# This is the final code for SIT210 - Final Project #
-#             Made by Team Embed Tech               #
-#     Automated Library Management System Code      #
-#  By Anneshu Nag, Anshpreet Singh, Gaganveer Singh #
+/* This is the final code for SIT210 - Final Project */
+/*             Made by Team Embed Tech               */
+/*     Automated Library Management System Code      */
+/*  By Anneshu Nag, Anshpreet Singh, Gaganveer Singh */
 
+/* This is the Arduino Code to add a new user to database */
 #include <WiFiNINA.h>
 
 char ssid[] = "Your Network SSID";      // your network SSID (name)
