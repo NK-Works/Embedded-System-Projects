@@ -4,7 +4,7 @@
 # Learnt about smbus2 library from -  https://pypi.org/project/smbus2/ #
 
 # Import necessary libraries
-import smbus2   # Used to use I2C funstionalities
+import smbus2   # Used to use I2C functionalities
 import time
 
 # Function to read the light sensor and calculate lux value
