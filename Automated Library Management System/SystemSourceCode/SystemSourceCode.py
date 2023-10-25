@@ -30,10 +30,10 @@ GPIO.setup(IR_PIN_RETURN, GPIO.IN)
 
 # Connect to the MySQL database
 db = mysql.connector.connect(
-    host="localhost",
-    user="root",
-    password="19782003",
-    database="LibraryDB"
+    host="Your Hostname/localhost",
+    user="Your Username/root",
+    password="Your Database Password",
+    database="Your Database Name"
 )
 cursor = db.cursor()
 
